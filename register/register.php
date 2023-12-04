@@ -5,57 +5,73 @@
                 <div class="account-wrap">
                     <div class="account-top sign-up">
                         <div class="account-top-current">
-                            <span>Sign Up</span>
+                            <span>S'inscrire</span>
                         </div>
                         <div class="account-top-link">
-                            <a href="../login/main.php">Sign In</a>
+                            <a href="../login/main.php">Se connecter</a>
                         </div>
                     </div>
                     <div class="account-main">
-                        <h3 class="account-title">Sign in to Your Account 👋</h3>
-                        <form action="#" class="account-form">
+                        <h3 class="account-title">S'inscrire maintenant👋</h3>
+                        <form action="signup.php" method="post" class="account-form">
                             <div class="account-form-item mb-20">
                                 <div class="account-form-label">
-                                    <label>First Name</label>
+                                    <label>CIN</label>
                                 </div>
                                 <div class="account-form-input">
-                                    <input type="text" placeholder="First Name">
+                                    <input type="text" name="cin" placeholder="Saisir votre cin" required>
+                                </div><br>
+                                <?php
+                                if (isset($_GET['error'])) {
+                                    $error = $_GET['error'];
+                                    if ($error === 'cin_exists') {
+                                        echo '<div class="alert alert-danger">CIN already exists. Please choose a different one.</div>';
+                                    }
+                                }
+                                ?>
+                            </div>
+                            <div class="account-form-item mb-20">
+                                <div class="account-form-label">
+                                    <label>Nom</label>
+                                </div>
+                                <div class="account-form-input">
+                                    <input type="text" name="nom" placeholder="Saisir votre nom" required>
                                 </div>
                             </div>
                             <div class="account-form-item mb-20">
                                 <div class="account-form-label">
-                                    <label>Last Name</label>
+                                    <label>Prénom</label>
                                 </div>
                                 <div class="account-form-input">
-                                    <input type="text" placeholder="Last Name">
+                                    <input type="text" name="prenom" placeholder="Saisir votre Prénom" required>
                                 </div>
                             </div>
                             <div class="account-form-item mb-20">
                                 <div class="account-form-label">
-                                    <label>Your Email</label>
+                                    <label>Votre e-mail</label>
                                 </div>
                                 <div class="account-form-input">
-                                    <input type="email" placeholder="Enter Your Email">
+                                    <input type="email" name="email" placeholder="Saisir votre Email" required>
                                 </div>
                             </div>
                             <div class="account-form-item mb-15">
                                 <div class="account-form-label">
-                                    <label>Your Password</label>
-                                    <a href="#">Forgot Password ?</a>
+                                    <label>Votre Mot de passe</label>
+                                    
                                 </div>
                                 <div class="account-form-input account-form-input-pass">
-                                    <input type="text" placeholder="*********">
+                                    <input type="password" name="password" placeholder="*********" required>
                                     <span><i class="fa-thin fa-eye"></i></span>
                                 </div>
                             </div>
                             <div class="account-form-condition">
-                                <label class="condition_label">Remember Me
-                                    <input type="checkbox">
+                                <label class="condition_label">êtes-vous un professeur ?
+                                    <input type="checkbox" name="estProfesseur">
                                     <span class="check_mark"></span>
                                 </label>
                             </div>
                             <div class="account-form-button">
-                                <button type="submit" class="account-btn">Sign Up</button>
+                                <button type="submit" name="submit" class="account-btn">S'inscrire</button>
                             </div>
                         </form>
                         <div class="account-break">
@@ -77,7 +93,7 @@
                                 </a>
                             </div>
                             <div class="account-bottom-text">
-                                <p>Already have an account ? <a href="sign-in.html">Sign In for here</a></p>
+                                <p>Vous avez déjà un compte ? <a href="../login/main.php">Connectez-vous ici</a></p>
                             </div>
                         </div>
                     </div>

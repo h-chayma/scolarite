@@ -1,16 +1,12 @@
 <?php
-// Get the current page URL
+session_start();
 $currentURL = $_SERVER['REQUEST_URI'];
-
-// Define menu items and their corresponding URLs
 $menuItems = [
     'Home' => '/scolarite/index.php',
     'About' => '/scolarite/about/main.php',
     'Courses' => '/scolarite/course/main.php',
     'Contact' => '/scolarite/contact/main.php',
 ];
-
-// Check each menu item against the current URL and set the active class
 function isCurrentPage($url)
 {
     global $currentURL;
@@ -37,7 +33,6 @@ function isCurrentPage($url)
     </div>
 </div>
 <div class="offcanvas-overlay"></div>
-
 <header>
     <div class="h2_header-area header-sticky">
         <div class="container">
@@ -68,9 +63,17 @@ function isCurrentPage($url)
                 </div>
                 <div class="col-xl-3 col-sm-5 col-6">
                     <div class="h2_header-right">
-                        <div class="h2_header-btn d-none d-sm-block">
-                            <a href="/scolarite/register/main.php" class="header-btn theme-btn theme-btn-medium">Sign Up</a>
-                        </div>
+                        <?php
+                        if (isset($_SESSION["user_id"])) {
+                            echo '<div class="h2_header-btn d-none d-sm-block">
+                      <a href="/scolarite/logout.php" class="header-btn theme-btn theme-btn-medium">Sign Out</a>
+                  </div>';
+                        } else {
+                            echo '<div class="h2_header-btn d-none d-sm-block">
+                      <a href="/scolarite/register/main.php" class="header-btn theme-btn theme-btn-medium">Sign Up</a>
+                  </div>';
+                        }
+                        ?>
                         <div class="header-menu-bar d-xl-none ml-10">
                             <span class="header-menu-bar-icon side-toggle">
                                 <i class="fa-light fa-bars"></i>

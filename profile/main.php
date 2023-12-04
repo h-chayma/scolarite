@@ -1,3 +1,13 @@
+<?php
+include '../database.php';
+include '../header.php';
+
+if (!isset($_SESSION["user_id"])) {
+    header("Location: ../login/main.php");
+    exit();
+}
+?>
+
 <!Doctype html>
 <html class="no-js" lang="zxx">
 
@@ -18,33 +28,24 @@
     <link rel="stylesheet" href="../assets/css/meanmenu.css">
     <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="../assets/css/main.css">
+    <style>
+        .h2_header-middle .h2_main-menu .active {
+            color: #0d6efd;
+        }
+    </style>
 </head>
 
 <body>
-    <?php
-    include '../header.php';
-    ?>
     <main>
         <?php
-        include 'breadcrumb.php';
-        include 'login.php';
+        include 'profile.php';
         ?>
     </main>
     <?php
     include '../footer.php';
     ?>
-
-    <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/swiper-bundle.min.js"></script>
-    <script src="../assets/js/jquery.meanmenu.min.js"></script>
-    <script src="../assets/js/wow.min.js"></script>
-    <script src="../assets/js/jquery.nice-select.min.js"></script>
-    <script src="../assets/js/jquery.scrollUp.min.js"></script>
-    <script src="../assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="../assets/js/odometer.min.js"></script>
-    <script src="../assets/js/appear.min.js"></script>
-    <script src="../assets/js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -8,38 +8,40 @@
                             <a href="../register/main.php">Sign Up</a>
                         </div>
                         <div class="account-top-current">
-                            <span>Sign In</span>
+                            <span>Se connecter</span>
                         </div>
                     </div>
                     <div class="account-main">
-                        <h3 class="account-title">Sign in to Your Account 👋</h3>
-                        <form action="#" class="account-form">
+                        <h3 class="account-title">Connectez-vous à votre compte 👋</h3>
+                        <?php
+                                if (isset($_GET['error'])) {
+                                    $error = $_GET['error'];
+                                    if ($error === 'invalid_credentials') {
+                                        echo '<div class="alert alert-danger">invalid_credentials</div>';
+                                    }
+                                }
+                                ?>
+                        <form action="signin.php" method="post" class="account-form">
                             <div class="account-form-item mb-20">
                                 <div class="account-form-label">
-                                    <label>Your Email</label>
+                                    <label>Numéro CIN</label>
                                 </div>
                                 <div class="account-form-input">
-                                    <input type="email" placeholder="Enter Your Email">
+                                    <input type="text" name="cin" placeholder="Saisir votre cin" required>
                                 </div>
                             </div>
                             <div class="account-form-item mb-15">
                                 <div class="account-form-label">
-                                    <label>Your Password</label>
-                                    <a href="#">Forgot Password ?</a>
+                                    <label>Votre mot de Passe</label>
+                                    <a href="#">Mot de passe oublié ?</a>
                                 </div>
                                 <div class="account-form-input account-form-input-pass">
-                                    <input type="text" placeholder="*********">
+                                    <input type="password" name="password" placeholder="*********" required>
                                     <span><i class="fa-thin fa-eye"></i></span>
                                 </div>
                             </div>
-                            <div class="account-form-condition">
-                                <label class="condition_label">Remember Me
-                                    <input type="checkbox">
-                                    <span class="check_mark"></span>
-                                </label>
-                            </div>
                             <div class="account-form-button">
-                                <button type="submit" class="account-btn">Sign In</button>
+                                <button type="submit" name="submit" class="account-btn">Se connecter</button>
                             </div>
                         </form>
                         <div class="account-break">
@@ -61,7 +63,7 @@
                                 </a>
                             </div>
                             <div class="account-bottom-text">
-                                <p>Don’t have an account ? <a href="sign-up.html">Sign Up for free</a></p>
+                                <p>Vous n'avez pas de compte ? <a href="sign-up.html">Inscrivez-vous ici</a></p>
                             </div>
                         </div>
                     </div>
